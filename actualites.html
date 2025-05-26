@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualités - URANUS GROUP</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="service-header">
+        <nav>
+            <div class="logo">
+                <h1><a href="index.html">URANUS GROUP</a></h1>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <i class="fas fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html#services">Nos Services</a></li>
+                    <li><a href="about.html">À Propos</a></li>
+                    <li><a href="references.html">Références</a></li>
+                    <li><a href="actualites.html">Actualités</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <i class="fas fa-bars" onclick="showMenu()"></i>
+        </nav>
+    </header>
+
+    <main class="news-page">
+        <section class="news-hero">
+            <h1>Actualités & Blog</h1>
+            <p>Restez informé des dernières tendances et de nos expertises</p>
+        </section>
+
+        <section class="news-content">
+            <div class="container">
+                <div class="news-filters">
+                    <button class="filter-btn active" data-filter="all">Tous</button>
+                    <button class="filter-btn" data-filter="conseil">Conseil</button>
+                    <button class="filter-btn" data-filter="informatique">Informatique</button>
+                    <button class="filter-btn" data-filter="qse">QSE</button>
+                </div>
+
+                <div class="news-grid">
+                    <!-- Article 1 -->
+                    <article class="news-card" data-category="qse">
+                        <div class="news-image">
+                            <img src="https://via.placeholder.com/600x400" alt="Transition écologique">
+                            <span class="category">QSE</span>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="date">15 Mars 2024</span>
+                                <span class="read-time">5 min de lecture</span>
+                            </div>
+                            <h2>La transition écologique en entreprise : enjeux et solutions</h2>
+                            <p>Découvrez comment mettre en place une stratégie de développement durable efficace...</p>
+                            <a href="#" class="read-more">Lire la suite <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="news-card" data-category="informatique">
+                        <div class="news-image">
+                            <img src="https://via.placeholder.com/600x400" alt="Intelligence Artificielle">
+                            <span class="category">Informatique</span>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="date">10 Mars 2024</span>
+                                <span class="read-time">8 min de lecture</span>
+                            </div>
+                            <h2>L'IA au service de la transformation digitale</h2>
+                            <p>Comment l'intelligence artificielle révolutionne les processus métier...</p>
+                            <a href="#" class="read-more">Lire la suite <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Article 3 -->
+                    <article class="news-card" data-category="conseil">
+                        <div class="news-image">
+                            <img src="https://via.placeholder.com/600x400" alt="Management hybride">
+                            <span class="category">Conseil</span>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="date">5 Mars 2024</span>
+                                <span class="read-time">6 min de lecture</span>
+                            </div>
+                            <h2>Le management hybride : nouveau défi des entreprises</h2>
+                            <p>Les meilleures pratiques pour gérer efficacement des équipes hybrides...</p>
+                            <a href="#" class="read-more">Lire la suite <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Article 4 -->
+                    <article class="news-card" data-category="qse">
+                        <div class="news-image">
+                            <img src="https://via.placeholder.com/600x400" alt="Certification ISO">
+                            <span class="category">QSE</span>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="date">1 Mars 2024</span>
+                                <span class="read-time">4 min de lecture</span>
+                            </div>
+                            <h2>Les nouvelles normes ISO : ce qui change en 2024</h2>
+                            <p>Guide complet des évolutions normatives et leurs impacts sur votre organisation...</p>
+                            <a href="#" class="read-more">Lire la suite <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="pagination">
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <span>...</span>
+                    <a href="#">10</a>
+                    <a href="#" class="next">Suivant <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter-section">
+            <div class="container">
+                <h2>Restez informé</h2>
+                <p>Inscrivez-vous à notre newsletter pour recevoir nos dernières actualités et articles</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Votre adresse email" required>
+                    <button type="submit" class="cta-button">S'inscrire</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>URANUS GROUP</h3>
+                <p>Votre partenaire pour l'excellence entrepreneuriale</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: contact@uranusgroup.fr</p>
+                <p>Tél: +33 (0)1 XX XX XX XX</p>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 URANUS GROUP. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

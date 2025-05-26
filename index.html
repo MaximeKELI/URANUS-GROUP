@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URANUS GROUP - Services aux Entreprises</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>URANUS GROUP</h1>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <i class="fas fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#services">Nos Services</a></li>
+                    <li><a href="#apropos">À Propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <i class="fas fa-bars" onclick="showMenu()"></i>
+        </nav>
+
+        <div class="hero" id="accueil">
+            <h1>Solutions Professionnelles pour votre Entreprise</h1>
+            <p>Expertise en Conseil, Informatique et QSE</p>
+            <a href="#contact" class="cta-button">Contactez-nous</a>
+        </div>
+    </header>
+
+    <section id="services" class="services">
+        <h2>Nos Services</h2>
+        <div class="services-container">
+            <div class="service-card">
+                <i class="fas fa-handshake"></i>
+                <h3>Conseil aux Entreprises</h3>
+                <p>Accompagnement stratégique et opérationnel pour optimiser votre performance.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Solutions Informatiques</h3>
+                <p>Transformation digitale et solutions technologiques sur mesure.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>QSE</h3>
+                <p>Qualité, Sécurité et Environnement : pour une entreprise responsable et performante.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="apropos" class="about">
+        <h2>À Propos d'URANUS GROUP</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>URANUS GROUP est votre partenaire de confiance pour relever les défis de demain. Notre expertise multisectorielle nous permet d'accompagner votre croissance de manière durable et efficace.</p>
+                <ul>
+                    <li>✓ Plus de 10 ans d'expertise</li>
+                    <li>✓ Une équipe de consultants spécialisés</li>
+                    <li>✓ Des solutions sur mesure</li>
+                    <li>✓ Un accompagnement personnalisé</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contactez-nous</h2>
+        <div class="contact-container">
+            <form id="contactForm">
+                <input type="text" placeholder="Nom" required>
+                <input type="email" placeholder="Email" required>
+                <input type="tel" placeholder="Téléphone">
+                <select required>
+                    <option value="">Sélectionnez un service</option>
+                    <option value="conseil">Conseil aux Entreprises</option>
+                    <option value="informatique">Solutions Informatiques</option>
+                    <option value="qse">QSE</option>
+                </select>
+                <textarea placeholder="Votre message" required></textarea>
+                <button type="submit" class="cta-button">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>URANUS GROUP</h3>
+                <p>Votre partenaire pour l'excellence entrepreneuriale</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: contact@uranusgroup.fr</p>
+                <p>Tél: +33 (0)1 XX XX XX XX</p>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 URANUS GROUP. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
