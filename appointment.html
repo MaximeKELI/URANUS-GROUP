@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prise de Rendez-vous - URANUS GROUP</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
+</head>
+<body>
+    <header class="service-header">
+        <nav>
+            <div class="logo">
+                <h1><a href="index.html">URANUS GROUP</a></h1>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <i class="fas fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html#services">Nos Services</a></li>
+                    <li><a href="about.html">À Propos</a></li>
+                    <li><a href="references.html">Références</a></li>
+                    <li><a href="actualites.html">Actualités</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <i class="fas fa-bars" onclick="showMenu()"></i>
+        </nav>
+    </header>
+
+    <main class="appointment-page">
+        <section class="appointment-hero">
+            <h1>Prendre Rendez-vous</h1>
+            <p>Planifiez une consultation avec nos experts</p>
+        </section>
+
+        <section class="appointment-form">
+            <div class="container">
+                <div class="appointment-steps">
+                    <div class="step active" id="step-1">
+                        <span class="step-number">1</span>
+                        <p>Choisir le service</p>
+                    </div>
+                    <div class="step" id="step-2">
+                        <span class="step-number">2</span>
+                        <p>Sélectionner la date</p>
+                    </div>
+                    <div class="step" id="step-3">
+                        <span class="step-number">3</span>
+                        <p>Vos informations</p>
+                    </div>
+                </div>
+
+                <div class="appointment-content">
+                    <!-- Étape 1 : Sélection du service -->
+                    <div class="service-selection">
+                        <h2>Sélectionnez un service</h2>
+                        <div class="service-options">
+                            <button class="service-option" data-service="conseil">
+                                <i class="fas fa-briefcase"></i>
+                                <h3>Conseil aux Entreprises</h3>
+                                <p>Consultation stratégique et optimisation</p>
+                            </button>
+                            <button class="service-option" data-service="informatique">
+                                <i class="fas fa-laptop-code"></i>
+                                <h3>Solutions Informatiques</h3>
+                                <p>Audit et transformation digitale</p>
+                            </button>
+                            <button class="service-option" data-service="qse">
+                                <i class="fas fa-shield-alt"></i>
+                                <h3>QSE</h3>
+                                <p>Qualité, Sécurité, Environnement</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Étape 2 : Sélection de la date -->
+                    <div class="date-selection" style="display: none;">
+                        <h2>Choisissez une date et un horaire</h2>
+                        <div class="calendar-container">
+                            <input type="text" id="appointment-calendar" placeholder="Sélectionnez une date">
+                            <div id="time-slots" class="time-slots">
+                                <!-- Les créneaux seront ajoutés dynamiquement -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Étape 3 : Informations personnelles -->
+                    <div class="personal-info" style="display: none;">
+                        <h2>Vos informations</h2>
+                        <form id="appointment-form">
+                            <div class="form-group">
+                                <input type="text" name="name" required placeholder="Nom complet">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" required placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="phone" required placeholder="Téléphone">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" placeholder="Message (optionnel)"></textarea>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Résumé du rendez-vous -->
+                    <div id="appointment-summary" class="appointment-summary">
+                        <!-- Le résumé sera ajouté dynamiquement -->
+                    </div>
+
+                    <!-- Boutons de navigation -->
+                    <div class="appointment-navigation">
+                        <button class="prev-step" style="display: none;">Précédent</button>
+                        <button class="next-step">Suivant</button>
+                        <button class="confirm-appointment" style="display: none;">Confirmer le rendez-vous</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>URANUS GROUP</h3>
+                <p>Votre partenaire pour l'excellence entrepreneuriale</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: contact@uranusgroup.fr</p>
+                <p>Tél: +33 (0)1 XX XX XX XX</p>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 URANUS GROUP. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
