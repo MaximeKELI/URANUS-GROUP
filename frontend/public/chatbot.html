@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URANUS GROUP - Assistant Virtuel</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- En-tête du site -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">URANUS GROUP</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#about">À propos</a></li>
+                    <li><a href="index.html#news">Actualités</a></li>
+                    <li><a href="index.html#references">Références</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="chatbot.html" class="active">Assistant</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Section Chatbot -->
+    <section class="chatbot-section">
+        <div class="container">
+            <div class="chatbot-header">
+                <h1>Assistant Virtuel URANUS GROUP</h1>
+                <p>Je suis là pour répondre à toutes vos questions sur nos services et solutions.</p>
+            </div>
+            
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="chat-header-icon">
+                        <img src="images/bot-avatar.svg" alt="Assistant Icon" class="bot-avatar">
+                    </div>
+                    <div class="chat-header-info">
+                        <h2>Assistant URANUS</h2>
+                        <span class="status online">En ligne</span>
+                    </div>
+                </div>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Message de bienvenue -->
+                    <div class="message message-assistant">
+                        <div class="message-content">
+                            <p>Bonjour ! Je suis l'assistant virtuel d'URANUS GROUP. Comment puis-je vous aider aujourd'hui ?</p>
+                        </div>
+                        <div class="message-time">Maintenant</div>
+                    </div>
+                </div>
+                
+                <div class="chat-input">
+                    <form id="chatForm" class="chat-form">
+                        <div class="input-wrapper">
+                            <input 
+                                type="text" 
+                                id="messageInput"
+                                placeholder="Posez votre question..." 
+                                required
+                                autocomplete="off"
+                            >
+                            <button type="button" class="suggestion-button" title="Suggestions">
+                                <i class="suggestion-icon"></i>
+                            </button>
+                        </div>
+                        <button type="submit" class="send-button">
+                            <span class="send-text">Envoyer</span>
+                            <i class="send-icon"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Suggestions de questions -->
+                <div class="chat-suggestions" style="display: none;">
+                    <div class="suggestion-item">Quels sont vos services de conseil ?</div>
+                    <div class="suggestion-item">Comment prendre rendez-vous ?</div>
+                    <div class="suggestion-item">Quelles sont vos certifications ?</div>
+                    <div class="suggestion-item">Où sont vos bureaux ?</div>
+                </div>
+
+                <!-- Indicateur de frappe -->
+                <div class="typing-indicator" style="display: none;">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>URANUS GROUP</h3>
+                    <p>Solutions innovantes pour votre entreprise</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: contact@uranusgroup.fr</p>
+                    <p>Tél: +33 1 23 45 67 89</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Suivez-nous</h3>
+                    <div class="social-links">
+                        <a href="#">LinkedIn</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 URANUS GROUP. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/chat.js"></script>
+</body>
+</html> 

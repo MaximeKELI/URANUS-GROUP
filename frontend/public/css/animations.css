@@ -1,0 +1,1303 @@
+/* Animations de base */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animation de défilement fluide */
+@keyframes smoothScroll {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation de gradient */
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Animation de texte */
+@keyframes textReveal {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+/* Animation de bordure */
+@keyframes borderGlow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(var(--primary-rgb), 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0);
+    }
+}
+
+/* Classes d'animation */
+.fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+}
+
+.slide-down {
+    animation: slideDown 0.6s ease-out forwards;
+}
+
+.scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
+}
+
+/* Animation au scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animation de la navigation */
+.nav-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Animation des cartes */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Animation du hero */
+.hero-text {
+    opacity: 0;
+    animation: textReveal 1s ease forwards 0.5s;
+}
+
+.hero-image {
+    opacity: 0;
+    animation: scaleIn 1s ease forwards;
+}
+
+/* Animation des boutons */
+.button {
+    position: relative;
+    overflow: hidden;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: 0.6s;
+}
+
+.button:hover::before {
+    left: 100%;
+}
+
+/* Animation du formulaire */
+.input-animated {
+    position: relative;
+}
+
+.input-animated label {
+    position: absolute;
+    left: var(--spacing-sm);
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    color: var(--text-tertiary);
+}
+
+.input-animated input:focus + label,
+.input-animated input:not(:placeholder-shown) + label {
+    top: 0;
+    font-size: 0.75rem;
+    color: var(--primary);
+}
+
+/* Animation de chargement */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.loading {
+    position: relative;
+    width: 24px;
+    height: 24px;
+}
+
+.loading::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--primary-light);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: rotate 0.8s linear infinite;
+}
+
+/* Animation de succès */
+@keyframes checkmark {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.success-animation {
+    animation: checkmark 0.5s ease-in-out forwards;
+}
+
+/* Animation de parallaxe */
+.parallax {
+    transform: translateZ(0);
+    transition: transform 0.1s ease-out;
+}
+
+/* Animation des icônes */
+.icon-pulse {
+    animation: borderGlow 2s infinite;
+}
+
+/* Animation du menu mobile */
+.menu-toggle {
+    position: relative;
+    width: 24px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.menu-toggle span:nth-child(1) { top: 0; }
+.menu-toggle span:nth-child(2) { top: 8px; }
+.menu-toggle span:nth-child(3) { top: 16px; }
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Animation de la galerie */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-item img {
+    transition: transform 0.6s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(var(--primary-rgb), 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* Animation du scroll progressif */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-light);
+    transform-origin: left;
+    z-index: 1000;
+}
+
+/* Animations de base */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 5px rgba(25, 118, 210, 0.2); }
+    50% { box-shadow: 0 0 20px rgba(25, 118, 210, 0.6); }
+    100% { box-shadow: 0 0 5px rgba(25, 118, 210, 0.2); }
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink {
+    50% { border-color: transparent }
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Animation d'écriture */
+.typing-indicator {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    background: #f0f2f5;
+    border-radius: 20px;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+    background-color: #1976d2;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.4;
+}
+
+.typing-indicator span:nth-child(1) {
+    animation: typing-dot 1.4s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation: typing-dot 1.4s infinite 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation: typing-dot 1.4s infinite 0.4s;
+}
+
+@keyframes typing-dot {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-5px); opacity: 1; }
+}
+
+/* Animations des messages */
+.message {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.message-user {
+    animation: slideIn 0.5s ease-out;
+}
+
+.message-assistant {
+    animation: slideIn 0.5s ease-out;
+}
+
+.message-content {
+    position: relative;
+    overflow: hidden;
+}
+
+.message-assistant .message-content {
+    background: linear-gradient(120deg, #1976d2, #2196f3);
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+    color: white;
+}
+
+/* Animation du statut en ligne */
+.status.online::before {
+    animation: pulseGlow 2s infinite;
+}
+
+/* Animations de l'interface */
+.chat-container {
+    animation: fadeIn 1s ease-out;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.chat-container:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.chat-header {
+    background: linear-gradient(120deg, #f8f9fa, #e9ecef);
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
+}
+
+/* Animations des suggestions */
+.suggestion-item {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.suggestion-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(25, 118, 210, 0.1),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.suggestion-item:hover::before {
+    left: 100%;
+}
+
+/* Animation du bouton d'envoi */
+.send-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.send-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.send-button:hover::before {
+    left: 100%;
+}
+
+/* Animation de l'input */
+.input-wrapper input {
+    transition: all 0.3s ease;
+}
+
+.input-wrapper input:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(25, 118, 210, 0.1);
+}
+
+/* Animation de chargement des messages */
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+.message.loading {
+    background: linear-gradient(
+        90deg,
+        #f0f0f0 25%,
+        #f8f8f8 50%,
+        #f0f0f0 75%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite linear;
+}
+
+/* Effet de particules lumineux */
+.chat-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at var(--x, 50%) var(--y, 50%),
+        rgba(25, 118, 210, 0.1) 0%,
+        transparent 50%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.chat-container:hover::before {
+    opacity: 1;
+}
+
+/* Animations générales */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Styles de base avec dégradés */
+:root {
+    --gradient-primary: linear-gradient(45deg, #2193b0, #6dd5ed);
+    --gradient-secondary: linear-gradient(135deg, #667eea, #764ba2);
+    --gradient-accent: linear-gradient(45deg, #ff6b6b, #feca57);
+    --gradient-dark: linear-gradient(45deg, #141e30, #243b55);
+}
+
+/* Header et Navigation */
+header {
+    background: var(--gradient-dark);
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+}
+
+.nav-links a {
+    background: linear-gradient(90deg, #fff, #fff) no-repeat 0 100%;
+    background-size: 0% 2px;
+    transition: background-size 0.3s;
+}
+
+.nav-links a:hover {
+    background-size: 100% 2px;
+}
+
+/* Hero Section */
+.hero {
+    background: var(--gradient-primary);
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/images/pattern.svg') repeat;
+    opacity: 0.1;
+    animation: float 6s ease-in-out infinite;
+}
+
+.hero h1 {
+    animation: slideIn 1s ease-out;
+}
+
+/* Services Cards */
+.service-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    background: var(--gradient-secondary);
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+}
+
+.service-card i {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Contact Form */
+.contact-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-container input,
+.contact-container textarea,
+.contact-container select {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.contact-container input:focus,
+.contact-container textarea:focus,
+.contact-container select:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #6dd5ed;
+    box-shadow: 0 0 15px rgba(109, 213, 237, 0.3);
+}
+
+/* Chat Widget */
+.chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.chat-button {
+    background: var(--gradient-primary);
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+    padding: 15px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.chat-button:hover {
+    transform: translateY(-5px);
+}
+
+.chat-window {
+    background: var(--gradient-dark);
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.chat-header {
+    background: var(--gradient-primary);
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+}
+
+.message {
+    animation: slideIn 0.3s ease-out;
+}
+
+.message-assistant {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.message-user {
+    background: var(--gradient-secondary);
+    background-size: 200% 200%;
+}
+
+.typing-indicator span {
+    background: #fff;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+/* Footer */
+footer {
+    background: var(--gradient-dark);
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+}
+
+/* Effets de survol */
+.cta-button {
+    background: var(--gradient-accent);
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations au scroll */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Particules interactives */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+/* Animation de texte clignotant */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Animation de rotation infinie */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Animation de rebond */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Animation de vague */
+@keyframes wave {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(0); }
+    100% { transform: translateX(100%); }
+}
+
+/* Animation de pulsation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Animation de secousse */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Animation de flottement */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Animation de rotation 3D */
+@keyframes rotate3D {
+    from { transform: perspective(1000px) rotateY(0deg); }
+    to { transform: perspective(1000px) rotateY(360deg); }
+}
+
+/* Animation de brillance */
+@keyframes shine {
+    from { background-position: -200% center; }
+    to { background-position: 200% center; }
+}
+
+/* Animation de morphing */
+@keyframes morph {
+    0% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+    50% { border-radius: 30% 60% 70% 40%/50% 60% 30% 60%; }
+    100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+}
+
+/* Animation de texte arc-en-ciel */
+.rainbow-text {
+    background: linear-gradient(
+        to right,
+        #ff0000,
+        #ff8000,
+        #ffff00,
+        #00ff00,
+        #00ffff,
+        #0000ff,
+        #8000ff,
+        #ff0080
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow-wave 8s linear infinite;
+    background-size: 200% auto;
+}
+
+@keyframes rainbow-wave {
+    0% { background-position: 0% center }
+    100% { background-position: 200% center }
+}
+
+/* Effet de halo multicolore */
+.multicolor-glow {
+    position: relative;
+}
+
+.multicolor-glow::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: inherit;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 0, 0, 0.5),
+        rgba(255, 165, 0, 0.5),
+        rgba(255, 255, 0, 0.5),
+        rgba(0, 255, 0, 0.5),
+        rgba(0, 255, 255, 0.5),
+        rgba(0, 0, 255, 0.5),
+        rgba(238, 130, 238, 0.5)
+    );
+    filter: blur(15px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    animation: rotate-glow 10s linear infinite;
+}
+
+.multicolor-glow:hover::before {
+    opacity: 1;
+}
+
+@keyframes rotate-glow {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
+}
+
+/* Animation de texte brillant */
+.shimmer-text {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.8),
+        transparent
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0 }
+    100% { background-position: 200% 0 }
+}
+
+/* Effet de bordure arc-en-ciel animée */
+.rainbow-border {
+    position: relative;
+    border-radius: 10px;
+    padding: 2px;
+}
+
+.rainbow-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+        45deg,
+        #ff0000,
+        #ff8000,
+        #ffff00,
+        #00ff00,
+        #00ffff,
+        #0000ff,
+        #8000ff,
+        #ff0080
+    );
+    border-radius: inherit;
+    z-index: -1;
+    animation: border-rainbow 5s linear infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes border-rainbow {
+    0% { background-position: 0% 50% }
+    50% { background-position: 100% 50% }
+    100% { background-position: 0% 50% }
+}
+
+/* Animation de texte néon multicolore */
+.neon-multicolor {
+    animation: neon-flicker 2s infinite;
+}
+
+@keyframes neon-flicker {
+    0%, 100% {
+        text-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px #ff00de,
+            0 0 82px #ff00de,
+            0 0 92px #ff00de,
+            0 0 102px #ff00de,
+            0 0 151px #ff00de;
+    }
+    50% {
+        text-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px #0099ff,
+            0 0 82px #0099ff,
+            0 0 92px #0099ff,
+            0 0 102px #0099ff,
+            0 0 151px #0099ff;
+    }
+}
+
+/* Effet de particules colorées */
+.sparkle-text {
+    position: relative;
+}
+
+.sparkle-text::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 50% 50%, white 0%, transparent 10%) 0 0 / 5px 5px,
+        radial-gradient(circle at 50% 50%, #ff00de 0%, transparent 10%) 2px 2px / 5px 5px,
+        radial-gradient(circle at 50% 50%, #0099ff 0%, transparent 10%) 4px 4px / 5px 5px;
+    opacity: 0;
+    animation: sparkle-animation 2s linear infinite;
+}
+
+@keyframes sparkle-animation {
+    0%, 100% { opacity: 0; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Animation de texte ondulant */
+.wave-text span {
+    display: inline-block;
+    animation: wave-motion 2s ease-in-out infinite;
+}
+
+@keyframes wave-motion {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Effet de focus lumineux multicolore */
+.focus-multicolor:focus {
+    outline: none;
+    box-shadow:
+        0 0 5px rgba(255, 0, 0, 0.5),
+        0 0 10px rgba(255, 165, 0, 0.5),
+        0 0 15px rgba(255, 255, 0, 0.5),
+        0 0 20px rgba(0, 255, 0, 0.5);
+    animation: focus-rainbow 3s linear infinite;
+}
+
+@keyframes focus-rainbow {
+    0% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
+    25% { box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); }
+    50% { box-shadow: 0 0 15px rgba(0, 0, 255, 0.5); }
+    75% { box-shadow: 0 0 15px rgba(238, 130, 238, 0.5); }
+    100% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
+}
+
+/* Animations de base avec effets lumineux */
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 5px rgba(62, 146, 204, 0.5),
+               0 0 10px rgba(62, 146, 204, 0.3),
+               0 0 15px rgba(62, 146, 204, 0.1); }
+  50% { box-shadow: 0 0 10px rgba(62, 146, 204, 0.5),
+                0 0 20px rgba(62, 146, 204, 0.3),
+                0 0 30px rgba(62, 146, 204, 0.1); }
+  100% { box-shadow: 0 0 5px rgba(62, 146, 204, 0.5),
+                 0 0 10px rgba(62, 146, 204, 0.3),
+                 0 0 15px rgba(62, 146, 204, 0.1); }
+}
+
+@keyframes colorShift {
+  0% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(180deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes borderGlow {
+  0% { border-color: #1a2a6c; }
+  33% { border-color: #3E92CC; }
+  66% { border-color: #4A00E0; }
+  100% { border-color: #1a2a6c; }
+}
+
+/* Application des animations */
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shimmer 3s linear infinite;
+}
+
+.hero-title {
+  animation: colorShift 10s infinite alternate;
+}
+
+.button {
+  position: relative;
+  overflow: hidden;
+  animation: glowPulse 2s infinite;
+}
+
+.button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shimmer 3s linear infinite;
+}
+
+.stat-card {
+  animation: borderGlow 4s infinite;
+}
+
+/* Effet de particules lumineuses */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  background: radial-gradient(circle at center, 
+    rgba(255,255,255,0.8) 0%,
+    rgba(255,255,255,0) 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  animation: particleFade 3s ease-in-out infinite;
+}
+
+@keyframes particleFade {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-50px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Effet de texte lumineux */
+.text-glow {
+  position: relative;
+  color: transparent;
+  background: linear-gradient(
+    45deg,
+    #1a2a6c,
+    #3E92CC,
+    #4A00E0,
+    #8E2DE2
+  );
+  background-size: 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: textGlow 8s linear infinite;
+}
+
+@keyframes textGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Effet de bordure lumineuse */
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    #1a2a6c,
+    #3E92CC,
+    #4A00E0,
+    #8E2DE2
+  );
+  border-radius: inherit;
+  z-index: -1;
+  animation: borderRotate 4s linear infinite;
+}
+
+@keyframes borderRotate {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+/* Effet de vague lumineuse */
+.wave-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.wave-effect::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center,
+    rgba(255,255,255,0.2) 0%,
+    transparent 70%);
+  animation: waveRotate 10s linear infinite;
+}
+
+@keyframes waveRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Effet de halo lumineux */
+.halo-effect {
+  position: relative;
+}
+
+.halo-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center,
+    rgba(62, 146, 204, 0.2) 0%,
+    transparent 70%);
+  filter: blur(10px);
+  animation: haloPulse 3s ease-in-out infinite;
+}
+
+@keyframes haloPulse {
+  0% { transform: scale(0.95); opacity: 0.5; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(0.95); opacity: 0.5; }
+}
+
+/* Effet de scintillement */
+.sparkle {
+  position: relative;
+}
+
+.sparkle::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle at center,
+    rgba(255,255,255,0.8) 0%,
+    transparent 30%);
+  animation: sparkleRotate 10s linear infinite;
+}
+
+@keyframes sparkleRotate {
+  0% { transform: rotate(0deg) scale(0.8); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(0.8); }
+} 

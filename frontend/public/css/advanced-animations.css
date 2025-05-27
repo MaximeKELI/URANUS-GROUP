@@ -1,0 +1,514 @@
+/* Variables de couleurs */
+:root {
+  --primary: #2193b0;
+  --secondary: #6dd5ed;
+  --accent: #ff6b6b;
+  --text: #333333;
+  --background: #ffffff;
+  --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  --glow-primary: rgba(26, 115, 232, 0.5);
+  --glow-secondary: rgba(52, 168, 83, 0.5);
+  --glow-accent: rgba(234, 67, 53, 0.5);
+  --gradient-royal: linear-gradient(45deg, #141e30, #243b55);
+  --gradient-ocean: linear-gradient(45deg, #2193b0, #6dd5ed);
+  --gradient-sunset: linear-gradient(45deg, #ff6b6b, #feca57);
+}
+
+/* Variables d'animation */
+:root {
+  --transition-speed: 0.2s;
+  --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Effet de verre moderne - Utilisé pour les cartes et le header */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+/* Animation subtile pour les boutons */
+.button-hover {
+  transition: all 0.3s ease;
+}
+
+.button-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation de fade */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s var(--animation-timing) forwards;
+}
+
+/* Animation de slide */
+@keyframes slideInRight {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-right {
+  animation: slideInRight 0.3s var(--animation-timing) forwards;
+}
+
+/* Animation de scale */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.scale-in {
+  animation: scaleIn 0.3s var(--animation-timing) forwards;
+}
+
+/* Effet de gradient subtil pour les titres */
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Animation douce pour les cartes de service */
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Loader */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+/* Animation de succès */
+@keyframes checkmark {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.success-animation {
+  animation: checkmark 0.3s var(--animation-timing) forwards;
+}
+
+/* Barre de progression discrète */
+.progress-bar {
+  height: 2px;
+  background: var(--gradient);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+/* Animation douce pour le menu mobile */
+.mobile-menu {
+  transition: transform 0.3s ease;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* Animation de focus */
+.focus-ring {
+  position: relative;
+}
+
+.focus-ring::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  left: -2px;
+  border: 2px solid currentColor;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity var(--transition-speed) var(--transition-timing);
+}
+
+.focus-ring:focus-visible::after {
+  opacity: 1;
+}
+
+/* Animation de hover */
+.hover-lift {
+  transition: transform var(--transition-speed) var(--transition-timing),
+              box-shadow var(--transition-speed) var(--transition-timing);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Animation de scroll progressif */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s var(--transition-timing),
+              transform 0.6s var(--transition-timing);
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Support de la préférence de réduction de mouvement */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .scroll-reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Effet de halo lumineux pour les logos et icônes */
+.glow-effect {
+  position: relative;
+  z-index: 1;
+}
+
+.glow-effect::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: var(--gradient-ocean);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  filter: blur(20px);
+  transition: opacity 0.3s ease;
+}
+
+.glow-effect:hover::before {
+  opacity: 0.7;
+}
+
+/* Animation de bordure lumineuse */
+.luminous-border {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.luminous-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    transparent 20%, 
+    var(--glow-primary) 40%,
+    var(--glow-secondary) 60%,
+    transparent 80%
+  );
+  border-radius: inherit;
+  z-index: -1;
+  animation: borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Effet de lumière pulsante pour les boutons */
+.pulse-light {
+  position: relative;
+  overflow: hidden;
+}
+
+.pulse-light::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, 
+    var(--glow-primary) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  animation: pulseLight 2s ease-in-out infinite;
+}
+
+@keyframes pulseLight {
+  0%, 100% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 0.5; transform: scale(1.1); }
+}
+
+/* Effet de formulaire lumineux */
+.form-glow {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.form-glow::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg,
+    var(--glow-primary),
+    var(--glow-secondary),
+    var(--glow-accent)
+  );
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.5;
+  filter: blur(15px);
+  animation: formGlow 10s ease infinite;
+}
+
+@keyframes formGlow {
+  0%, 100% { 
+    filter: blur(15px);
+    opacity: 0.5;
+  }
+  50% { 
+    filter: blur(20px);
+    opacity: 0.7;
+  }
+}
+
+/* Effet de texte lumineux */
+.text-glow {
+  color: white;
+  text-shadow: 
+    0 0 10px var(--glow-primary),
+    0 0 20px var(--glow-primary),
+    0 0 30px var(--glow-secondary);
+  animation: textGlow 2s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Effet de carte avec aura */
+.card-aura {
+  position: relative;
+  overflow: visible;
+}
+
+.card-aura::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  right: -30px;
+  bottom: -30px;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    var(--glow-primary) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  filter: blur(20px);
+}
+
+.card-aura:hover::before {
+  opacity: 0.7;
+}
+
+/* Effet de focus lumineux */
+.input-glow {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.input-glow:focus {
+  outline: none;
+  box-shadow: 
+    0 0 0 2px white,
+    0 0 10px var(--glow-primary),
+    0 0 20px var(--glow-secondary);
+}
+
+/* Effet de logo flottant avec aura */
+.floating-logo {
+  position: relative;
+  animation: floatWithGlow 6s ease-in-out infinite;
+}
+
+.floating-logo::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: radial-gradient(
+    circle at center,
+    var(--glow-primary) 0%,
+    transparent 70%
+  );
+  filter: blur(15px);
+  opacity: 0.5;
+  z-index: -1;
+  animation: logoGlow 6s ease-in-out infinite;
+}
+
+@keyframes floatWithGlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes logoGlow {
+  0%, 100% { 
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+/* Effet de menu lumineux */
+.nav-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-glow::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg,
+    var(--glow-primary),
+    var(--glow-secondary)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: blur(10px);
+  z-index: -1;
+}
+
+.nav-glow:hover::before {
+  opacity: 0.7;
+}
+
+/* Effet de bouton avec particules lumineuses */
+.sparkle-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.sparkle-button::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(
+    circle at center,
+    white 0%,
+    transparent 30%
+  );
+  opacity: 0;
+  transform: rotate(45deg);
+  animation: sparkle 4s linear infinite;
+}
+
+@keyframes sparkle {
+  0% {
+    transform: rotate(45deg) translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: rotate(45deg) translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Support de la préférence de réduction de mouvement */
+@media (prefers-reduced-motion: reduce) {
+  .glow-effect::before,
+  .luminous-border::before,
+  .pulse-light::after,
+  .form-glow::before,
+  .card-aura::before,
+  .floating-logo::before,
+  .nav-glow::before,
+  .sparkle-button::before {
+    animation: none !important;
+    transition: none !important;
+  }
+} 

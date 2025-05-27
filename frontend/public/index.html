@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URANUS GROUP - Excellence & Innovation</title>
+    <meta name="description" content="URANUS GROUP - Expert en conseil, solutions informatiques et QSE pour les entreprises">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="space-background"></div>
+    <div class="space-vortex"></div>
+    <div class="stardust"></div>
+    <div class="stars"></div>
+
+    <!-- Comètes -->
+    <div class="comet" style="--comet-duration: 8s; top: 20%; left: 0;"></div>
+    <div class="comet" style="--comet-duration: 12s; top: 40%; left: 20%;"></div>
+    <div class="comet" style="--comet-duration: 15s; top: 60%; left: 40%;"></div>
+
+    <!-- Planètes -->
+    <div class="planet" style="top: 15%; right: 10%; width: 100px; height: 100px; background: radial-gradient(circle at 30% 30%, #4facfe, #0B0B1A);"></div>
+    <div class="planet" style="top: 65%; left: 5%; width: 150px; height: 150px; background: radial-gradient(circle at 40% 40%, #00f2fe, #0B0B1A);"></div>
+
+    <!-- Étoiles scintillantes -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const stars = document.querySelector('.stars');
+        for(let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 2 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.setProperty('--twinkle-duration', Math.random() * 3 + 2 + 's');
+            stars.appendChild(star);
+        }
+    });
+    </script>
+
+    <!-- Particules -->
+    <div class="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar glow-border">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="/" class="text-glow">URANUS GROUP</a></h1>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="#services" class="nav-link wave-effect">Services</a></li>
+                    <li><a href="#about" class="nav-link wave-effect">À propos</a></li>
+                    <li><a href="#expertise" class="nav-link wave-effect">Expertise</a></li>
+                    <li><a href="#contact" class="nav-link wave-effect">Contact</a></li>
+                </ul>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero halo-effect">
+        <div class="container">
+            <div class="hero-content reveal">
+                <h1 class="hero-title text-glow">Innovez avec<br>URANUS GROUP</h1>
+                <p class="sparkle">Votre partenaire en excellence pour le conseil, l'informatique et le QSE</p>
+                <a href="#contact" class="button wave-effect">Démarrer votre projet</a>
+            </div>
+            <div class="hero-image reveal">
+                <img src="images/hero-image.jpg" alt="URANUS GROUP Innovation" class="glow-border">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="text-gradient text-glow reveal">Nos Services</h2>
+            <div class="grid grid-3">
+                <div class="card glow-border reveal">
+                    <i class="fas fa-laptop-code sparkle"></i>
+                    <h3 class="text-glow">Solutions Informatiques</h3>
+                    <p>Développement sur mesure, intégration de systèmes et transformation digitale pour votre entreprise.</p>
+                </div>
+                <div class="card glow-border reveal">
+                    <i class="fas fa-chart-line sparkle"></i>
+                    <h3 class="text-glow">Conseil Stratégique</h3>
+                    <p>Accompagnement personnalisé pour optimiser vos processus et atteindre vos objectifs.</p>
+                </div>
+                <div class="card glow-border reveal">
+                    <i class="fas fa-shield-alt sparkle"></i>
+                    <h3 class="text-glow">QSE</h3>
+                    <p>Gestion de la qualité, sécurité et environnement pour une performance durable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about halo-effect">
+        <div class="container">
+            <div class="grid grid-2">
+                <div class="about-content reveal">
+                    <h2 class="text-gradient text-glow">Notre Histoire</h2>
+                    <p class="sparkle">URANUS GROUP accompagne les entreprises dans leur transformation depuis plus de 15 ans. Notre expertise et notre engagement nous permettent de délivrer des solutions innovantes et durables.</p>
+                    <a href="#contact" class="button wave-effect">En savoir plus</a>
+                </div>
+                <div class="stats-section reveal">
+                    <div class="grid grid-2">
+                        <div class="stat-card glow-border">
+                            <span class="stat-number text-glow" data-target="150">0</span>
+                            <p>Projets Réalisés</p>
+                        </div>
+                        <div class="stat-card glow-border">
+                            <span class="stat-number text-glow" data-target="50">0</span>
+                            <p>Experts</p>
+                        </div>
+                        <div class="stat-card glow-border">
+                            <span class="stat-number text-glow" data-target="15">0</span>
+                            <p>Années d'Expérience</p>
+                        </div>
+                        <div class="stat-card glow-border">
+                            <span class="stat-number text-glow" data-target="98">0</span>
+                            <p>Clients Satisfaits</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="expertise">
+        <div class="container">
+            <h2 class="text-gradient text-glow reveal">Notre Expertise</h2>
+            <div class="grid grid-3">
+                <div class="card glow-border reveal">
+                    <i class="fas fa-code sparkle"></i>
+                    <h3 class="text-glow">Développement</h3>
+                    <ul>
+                        <li>Applications Web</li>
+                        <li>Applications Mobiles</li>
+                        <li>Solutions Cloud</li>
+                    </ul>
+                </div>
+                <div class="card glow-border reveal">
+                    <i class="fas fa-lightbulb sparkle"></i>
+                    <h3 class="text-glow">Innovation</h3>
+                    <ul>
+                        <li>Intelligence Artificielle</li>
+                        <li>IoT</li>
+                        <li>Big Data</li>
+                    </ul>
+                </div>
+                <div class="card glow-border reveal">
+                    <i class="fas fa-tasks sparkle"></i>
+                    <h3 class="text-glow">Management</h3>
+                    <ul>
+                        <li>Gestion de Projet</li>
+                        <li>Audit & Conseil</li>
+                        <li>Formation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="text-gradient">Contactez-nous</h2>
+            <div class="contact-form-container">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" placeholder="Votre nom" required>
+                        <label class="form-label" for="name">Votre nom</label>
+                        <i class="fas fa-user"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" placeholder="Votre email" required>
+                        <label class="form-label" for="email">Votre email</label>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="tel" class="form-control" id="phone" placeholder="Votre téléphone">
+                        <label class="form-label" for="phone">Votre téléphone</label>
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <select class="form-control" id="subject" required>
+                            <option value="">Sélectionnez un sujet</option>
+                            <option value="conseil">Conseil</option>
+                            <option value="informatique">Informatique</option>
+                            <option value="qse">QSE</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                        <label class="form-label" for="subject">Sujet</label>
+                        <i class="fas fa-folder"></i>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <textarea class="form-control" id="message" placeholder="Votre message" required></textarea>
+                        <label class="form-label" for="message">Votre message</label>
+                        <i class="fas fa-comment"></i>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        Envoyer le message
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Message de succès -->
+    <div class="success-message" style="display: none;">
+        Message envoyé avec succès !
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer halo-effect">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="text-glow">URANUS GROUP</h3>
+                    <p class="sparkle">Excellence & Innovation</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="text-glow">Navigation</h3>
+                    <ul>
+                        <li><a href="#services" class="wave-effect">Services</a></li>
+                        <li><a href="#about" class="wave-effect">À propos</a></li>
+                        <li><a href="#expertise" class="wave-effect">Expertise</a></li>
+                        <li><a href="#contact" class="wave-effect">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="text-glow">Suivez-nous</h3>
+                    <div class="social-links">
+                        <a href="#" class="sparkle"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="sparkle"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="sparkle"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="sparkle">&copy; 2024 URANUS GROUP. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+</body>
+</html> 
