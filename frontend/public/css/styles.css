@@ -199,10 +199,13 @@ p {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.5s ease;
+  animation: cardFloat 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 .card:hover {
-  transform: translateY(-15px) scale(1.02);
+  transform: translateY(-30px) scale(1.05);
   box-shadow: 
       0 20px 40px rgba(0, 0, 0, 0.1),
       0 0 20px rgba(62, 146, 204, 0.3),
@@ -212,35 +215,26 @@ p {
 .card::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-      45deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-  );
-  transform: rotate(45deg);
-  transition: all 0.5s ease;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: radial-gradient(circle at center,
+      rgba(79, 172, 254, 0.1) 0%,
+      transparent 70%);
+  border-radius: 20px;
+  z-index: -1;
+  animation: glowPulse 2s ease-in-out infinite;
 }
 
-.card:hover::before {
-  animation: cardShine 1.5s infinite;
-}
-
-@keyframes cardShine {
-  0% {
-      left: -50%;
-      opacity: 0;
+@keyframes glowPulse {
+  0%, 100% {
+      opacity: 0.5;
+      transform: scale(1);
   }
   50% {
       opacity: 1;
-  }
-  100% {
-      left: 100%;
-      opacity: 0;
+      transform: scale(1.05);
   }
 }
 
@@ -255,8 +249,8 @@ p {
 }
 
 .card:hover h3 {
-  transform: scale(1.1);
-  text-shadow: 0 0 10px rgba(62, 146, 204, 0.3);
+  transform: translateY(-5px);
+  color: var(--gradient-1);
 }
 
 .card p {
@@ -281,6 +275,8 @@ p {
   display: inline-block;
   position: relative;
   transition: transform 0.5s ease;
+  animation: iconFloat 4s ease-in-out infinite;
+  transform-style: preserve-3d;
 }
 
 .card:hover i {
@@ -380,6 +376,8 @@ p {
   background-clip: text;
   color: transparent;
   text-shadow: 0 0 20px rgba(79, 172, 254, 0.5);
+  animation: titleFloat 4s ease-in-out infinite;
+  display: inline-block;
 }
 
 .bg-gradient {
@@ -590,14 +588,14 @@ header {
     display: inline-block;
     padding: 8px 12px;
     position: relative;
-    animation: fadeInUp 0.5s ease forwards;
+    animation: navFloat 4s ease-in-out infinite;
     opacity: 0;
 }
 
-.nav-links ul li:nth-child(1) { animation-delay: 0.1s; }
-.nav-links ul li:nth-child(2) { animation-delay: 0.2s; }
-.nav-links ul li:nth-child(3) { animation-delay: 0.3s; }
-.nav-links ul li:nth-child(4) { animation-delay: 0.4s; }
+.nav-links ul li:nth-child(1) { animation-delay: 0s; }
+.nav-links ul li:nth-child(2) { animation-delay: 1s; }
+.nav-links ul li:nth-child(3) { animation-delay: 2s; }
+.nav-links ul li:nth-child(4) { animation-delay: 3s; }
 .nav-links ul li:nth-child(5) { animation-delay: 0.5s; }
 .nav-links ul li:nth-child(6) { animation-delay: 0.6s; }
 
@@ -2041,7 +2039,7 @@ footer {
     cursor: pointer;
 }
 
-/* Animations pour les dégradés */
+/* Animations */
 @keyframes gradientBG {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -2107,21 +2105,24 @@ footer {
     max-width: 800px;
     margin: 0 auto;
     padding: 3rem;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
+    background: rgba(135, 206, 235, 0.05);
+    border: 1px solid rgba(135, 206, 235, 0.2);
     box-shadow: 
-        0 8px 32px 0 rgba(31, 38, 135, 0.15),
-        inset 0 0 2px 1px rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+        0 8px 32px 0 rgba(135, 206, 235, 0.15),
+        inset 0 0 2px 1px rgba(135, 206, 235, 0.2);
+    border-radius: 20px;
     transform-style: preserve-3d;
     perspective: 1000px;
-    animation: formFloat 6s ease-in-out infinite;
+    animation: formFloat 8s ease-in-out infinite;
 }
 
 @keyframes formFloat {
-    0%, 100% { transform: translateY(0) rotate3d(1, 1, 1, 0deg); }
-    50% { transform: translateY(-20px) rotate3d(1, 1, 1, 2deg); }
+    0%, 100% {
+        transform: translateY(0) rotate3d(1, 1, 1, 0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate3d(1, 1, 1, 1deg);
+    }
 }
 
 .contact-form {
@@ -2142,10 +2143,10 @@ footer {
 .form-control {
     width: 100%;
     padding: 1.2rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(135, 206, 235, 0.08);
     border: 2px solid transparent;
     border-radius: 12px;
-    color: var(--text-primary);
+    color: #E0F7FF;
     font-size: 1rem;
     transition: all 0.3s ease;
     backdrop-filter: blur(5px);
@@ -2160,29 +2161,29 @@ footer {
     left: 1rem;
     top: 1.2rem;
     padding: 0 0.5rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: #87CEEB;
     font-size: 1rem;
     transition: all 0.3s ease;
     pointer-events: none;
     background: linear-gradient(90deg, 
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.1) 50%,
-        rgba(255, 255, 255, 0) 100%);
+        rgba(135, 206, 235, 0) 0%,
+        rgba(135, 206, 235, 0.1) 50%,
+        rgba(135, 206, 235, 0) 100%);
 }
 
 .form-control:focus,
 .form-control:not(:placeholder-shown) {
-    border-color: var(--primary-light);
-    background: rgba(255, 255, 255, 0.15);
+    border-color: #87CEEB;
+    background: rgba(135, 206, 235, 0.15);
     box-shadow: 
-        0 0 20px rgba(62, 146, 204, 0.1),
-        0 0 40px rgba(62, 146, 204, 0.1);
+        0 0 20px rgba(135, 206, 235, 0.2),
+        0 0 40px rgba(135, 206, 235, 0.1);
 }
 
 .form-control:focus + .form-label,
 .form-control:not(:placeholder-shown) + .form-label {
     transform: translateY(-2.2rem) scale(0.9);
-    color: var(--primary-light);
+    color: #ADD8E6;
     font-weight: 500;
 }
 
@@ -2199,10 +2200,12 @@ textarea.form-control {
     grid-column: 1 / -1;
     padding: 1.2rem 3rem;
     background: linear-gradient(45deg, 
-        var(--primary) 0%, 
-        var(--primary-light) 50%,
-        var(--primary) 100%);
-    background-size: 200% auto;
+        #4FB4DE 0%, 
+        #87CEEB 50%,
+        #4FB4DE 100%);
+    box-shadow: 
+        0 0 20px rgba(135, 206, 235, 0.3),
+        0 0 40px rgba(135, 206, 235, 0.2);
     color: white;
     border: none;
     border-radius: 12px;
@@ -2212,15 +2215,17 @@ textarea.form-control {
     transition: all 0.5s ease;
     position: relative;
     overflow: hidden;
+    animation: buttonFloat 3s ease-in-out infinite;
+    transform-style: preserve-3d;
 }
 
 .submit-btn:hover {
     background-position: right center;
     transform: translateY(-3px);
     box-shadow: 
-        0 10px 20px rgba(0, 0, 0, 0.1),
-        0 6px 6px rgba(0, 0, 0, 0.1),
-        0 0 100px rgba(62, 146, 204, 0.3);
+        0 10px 20px rgba(135, 206, 235, 0.3),
+        0 6px 6px rgba(135, 206, 235, 0.2),
+        0 0 100px rgba(135, 206, 235, 0.4);
 }
 
 .submit-btn::after {
@@ -2233,7 +2238,7 @@ textarea.form-control {
     background: linear-gradient(
         45deg,
         transparent,
-        rgba(255, 255, 255, 0.3),
+        rgba(135, 206, 235, 0.4),
         transparent
     );
     transform: rotate(45deg);
@@ -2289,7 +2294,7 @@ textarea.form-control {
     position: absolute;
     right: 1rem;
     top: 1.2rem;
-    color: var(--text-secondary);
+    color: #87CEEB;
     transition: all 0.3s ease;
 }
 
@@ -2321,7 +2326,7 @@ textarea.form-control {
     top: 2rem;
     right: 2rem;
     padding: 1rem 2rem;
-    background: linear-gradient(45deg, var(--gradient-4), var(--gradient-2));
+    background: linear-gradient(45deg, #4FB4DE, #87CEEB);
     color: white;
     border-radius: 8px;
     transform: translateX(200%);
@@ -2344,7 +2349,7 @@ textarea.form-control {
     right: -20px;
     bottom: -20px;
     background: radial-gradient(circle at center,
-        rgba(62, 146, 204, 0.1) 0%,
+        rgba(135, 206, 235, 0.2) 0%,
         transparent 70%);
     z-index: -1;
     border-radius: 25px;
@@ -2532,4 +2537,335 @@ body {
     50% {
         transform: translateY(-20px) rotate(1deg);
     }
+}
+
+/* Effet de flottement pour les cartes */
+.card {
+    animation: cardFloat 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.card:nth-child(1) { animation-delay: 0s; }
+.card:nth-child(2) { animation-delay: 2s; }
+.card:nth-child(3) { animation-delay: 4s; }
+
+@keyframes cardFloat {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate3d(1, 1, 1, 0deg);
+    }
+    25% {
+        transform: translateY(-15px) translateX(5px) rotate3d(1, 1, 1, 2deg);
+    }
+    50% {
+        transform: translateY(-25px) translateX(-5px) rotate3d(1, 1, 1, -1deg);
+    }
+    75% {
+        transform: translateY(-15px) translateX(8px) rotate3d(1, 1, 1, 1deg);
+    }
+}
+
+/* Effet de flottement pour les icônes */
+.card i {
+    animation: iconFloat 4s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes iconFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.1);
+    }
+}
+
+/* Effet de flottement pour les statistiques */
+.stat-card {
+    animation: statFloat 5s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0s; }
+.stat-card:nth-child(2) { animation-delay: 1.5s; }
+.stat-card:nth-child(3) { animation-delay: 3s; }
+.stat-card:nth-child(4) { animation-delay: 4.5s; }
+
+@keyframes statFloat {
+    0%, 100% {
+        transform: translateY(0) rotate3d(1, 1, 1, 0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate3d(1, 1, 1, 2deg);
+    }
+}
+
+/* Effet de flottement pour le texte des titres */
+.text-gradient {
+    animation: titleFloat 4s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes titleFloat {
+    0%, 100% {
+        transform: translateY(0);
+        text-shadow: 0 0 20px rgba(79, 172, 254, 0.5);
+    }
+    50% {
+        transform: translateY(-5px);
+        text-shadow: 0 0 30px rgba(79, 172, 254, 0.8);
+    }
+}
+
+/* Effet de flottement pour les sections d'expertise */
+.expertise .card {
+    animation: expertiseFloat 7s ease-in-out infinite;
+}
+
+.expertise .card:nth-child(1) { animation-delay: 0s; }
+.expertise .card:nth-child(2) { animation-delay: 2.3s; }
+.expertise .card:nth-child(3) { animation-delay: 4.6s; }
+
+@keyframes expertiseFloat {
+    0%, 100% {
+        transform: translateY(0) rotate3d(0, 1, 0, 0deg);
+    }
+    25% {
+        transform: translateY(-20px) rotate3d(0, 1, 0, 2deg);
+    }
+    50% {
+        transform: translateY(-30px) rotate3d(0, 1, 0, -2deg);
+    }
+    75% {
+        transform: translateY(-15px) rotate3d(0, 1, 0, 1deg);
+    }
+}
+
+/* Effet de flottement pour le formulaire de contact */
+.contact-form-container {
+    animation: formFloat 8s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes formFloat {
+    0%, 100% {
+        transform: translateY(0) rotate3d(1, 1, 1, 0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate3d(1, 1, 1, 1deg);
+    }
+}
+
+/* Effet de flottement pour les boutons */
+.button, .submit-btn {
+    animation: buttonFloat 3s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes buttonFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Effet de flottement pour le logo */
+.logo h1 {
+    animation: logoFloat 5s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0) rotate3d(0, 1, 0, 0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate3d(0, 1, 0, 5deg);
+    }
+}
+
+/* Effet de flottement pour les liens de navigation */
+.nav-links ul li {
+    animation: navFloat 4s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+.nav-links ul li:nth-child(1) { animation-delay: 0s; }
+.nav-links ul li:nth-child(2) { animation-delay: 1s; }
+.nav-links ul li:nth-child(3) { animation-delay: 2s; }
+.nav-links ul li:nth-child(4) { animation-delay: 3s; }
+
+@keyframes navFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Amélioration des transitions au survol */
+.card:hover {
+    animation-play-state: paused;
+    transform: translateY(-30px) scale(1.05);
+    transition: all 0.5s ease;
+}
+
+.card:hover i {
+    animation-play-state: paused;
+    transform: scale(1.2);
+    transition: all 0.5s ease;
+}
+
+/* Effet de profondeur au survol */
+.card:hover::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(circle at center,
+        rgba(79, 172, 254, 0.1) 0%,
+        transparent 70%);
+    border-radius: 20px;
+    z-index: -1;
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+/* Modifications du formulaire de contact pour plus de lisibilité */
+.contact-form-container {
+    background: linear-gradient(135deg, 
+        rgba(13, 23, 57, 0.9) 0%,
+        rgba(22, 41, 90, 0.95) 100%);
+    border: 1px solid rgba(135, 206, 235, 0.3);
+    box-shadow: 
+        0 8px 32px 0 rgba(0, 0, 0, 0.2),
+        inset 0 0 2px 1px rgba(135, 206, 235, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.form-control {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(135, 206, 235, 0.3);
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.form-control:focus,
+.form-control:not(:placeholder-shown) {
+    background: rgba(135, 206, 235, 0.15);
+    border-color: #87CEEB;
+    box-shadow: 
+        0 0 20px rgba(135, 206, 235, 0.2),
+        0 0 40px rgba(135, 206, 235, 0.1);
+}
+
+.form-label {
+    color: #87CEEB;
+    font-weight: 500;
+    text-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
+}
+
+.form-group i {
+    color: #87CEEB;
+    opacity: 0.9;
+    text-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
+}
+
+.submit-btn {
+    background: linear-gradient(45deg, 
+        #4FB4DE 0%, 
+        #87CEEB 50%,
+        #4FB4DE 100%);
+    background-size: 200% auto;
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 
+        0 4px 15px rgba(79, 180, 222, 0.4),
+        0 0 20px rgba(135, 206, 235, 0.3);
+}
+
+.submit-btn:hover {
+    background-position: right center;
+    transform: translateY(-3px);
+    box-shadow: 
+        0 6px 20px rgba(79, 180, 222, 0.6),
+        0 0 30px rgba(135, 206, 235, 0.4);
+}
+
+/* Style du select */
+select.form-control {
+    cursor: pointer;
+    appearance: none;
+    padding-right: 2.5rem;
+    background-image: 
+        linear-gradient(45deg, transparent 50%, #87CEEB 50%),
+        linear-gradient(135deg, #87CEEB 50%, transparent 50%);
+    background-position: 
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px);
+    background-size: 
+        5px 5px,
+        5px 5px;
+    background-repeat: no-repeat;
+}
+
+/* Animation de flottement améliorée */
+@keyframes formFloat {
+    0%, 100% {
+        transform: translateY(0) rotate3d(1, 1, 1, 0deg);
+        box-shadow: 
+            0 8px 32px 0 rgba(0, 0, 0, 0.2),
+            inset 0 0 2px 1px rgba(135, 206, 235, 0.3);
+    }
+    50% {
+        transform: translateY(-15px) rotate3d(1, 1, 1, 1deg);
+        box-shadow: 
+            0 15px 40px 0 rgba(0, 0, 0, 0.3),
+            inset 0 0 4px 2px rgba(135, 206, 235, 0.4);
+    }
+}
+
+/* Effet de focus amélioré */
+.form-control:focus {
+    outline: none;
+    border-color: #87CEEB;
+    box-shadow: 
+        0 0 0 3px rgba(135, 206, 235, 0.3),
+        0 0 20px rgba(135, 206, 235, 0.2);
+}
+
+/* Message d'erreur */
+.error-message {
+    color: #ff6b6b;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+}
+
+/* Message de succès */
+.success-message {
+    background: linear-gradient(45deg, #4FB4DE, #87CEEB);
+    border: 1px solid rgba(135, 206, 235, 0.3);
+    box-shadow: 
+        0 4px 15px rgba(79, 180, 222, 0.4),
+        0 0 20px rgba(135, 206, 235, 0.3);
 } 
