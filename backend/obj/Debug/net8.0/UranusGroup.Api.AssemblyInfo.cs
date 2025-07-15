@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UranusGroup.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+326b5250995e313029649934a1b6d6d0885da7f2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e26d1bdb66225c26420ec7a32f51ac756df66c3")]
 [assembly: System.Reflection.AssemblyProductAttribute("UranusGroup.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UranusGroup.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

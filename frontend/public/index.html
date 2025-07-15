@@ -236,7 +236,8 @@
 
     <!-- Message de succès -->
     <div class="success-message" style="display: none;">
-        Message envoyé avec succès !
+        <i class="fas fa-check-circle"></i>
+        <span>Message envoyé avec succès !</span>
     </div>
 
     <!-- Footer -->
@@ -271,7 +272,114 @@
         </div>
     </footer>
 
+    <!-- Chatbot Toggle -->
+    <div class="chatbot-toggle">
+        <img src="./images/bot-avatar.svg" alt="Assistant IA" class="bot-avatar">
+        <span>Assistant IA</span>
+    </div>
+
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <img src="./images/bot-avatar.svg" alt="Assistant IA" class="bot-avatar">
+                <span>Assistant URANUS IA</span>
+            </div>
+            <div class="chatbot-close">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        
+        <div class="chatbot-messages">
+            <div class="message bot-message">
+                Bonjour ! Je suis l'assistant virtuel d'URANUS GROUP. Comment puis-je vous aider aujourd'hui ?
+            </div>
+            <div class="typing-indicator" style="display: none;">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        </div>
+        
+        <div class="chatbot-input">
+            <input type="text" placeholder="Écrivez votre message..." aria-label="Message">
+            <button class="send-button">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="js/script.js"></script>
+    <script src="js/chat.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const chatbotToggle = document.querySelector('.chatbot-toggle');
+        const chatbotContainer = document.querySelector('.chatbot-container');
+        const chatbotClose = document.querySelector('.chatbot-close');
+        const chatInput = document.querySelector('.chatbot-input input');
+        const sendButton = document.querySelector('.send-button');
+        const messagesContainer = document.querySelector('.chatbot-messages');
+        const typingIndicator = document.querySelector('.typing-indicator');
+
+        // Toggle chatbot
+        chatbotToggle.addEventListener('click', function() {
+            chatbotContainer.classList.add('active');
+            chatbotToggle.classList.add('active');
+        });
+
+        chatbotClose.addEventListener('click', function() {
+            chatbotContainer.classList.remove('active');
+            chatbotToggle.classList.remove('active');
+        });
+
+        // Send message function
+        function sendMessage(message) {
+            if (!message.trim()) return;
+
+            // Add user message
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.className = 'message user-message';
+            userMessageDiv.textContent = message;
+            messagesContainer.appendChild(userMessageDiv);
+
+            // Clear input
+            chatInput.value = '';
+
+            // Show typing indicator
+            typingIndicator.style.display = 'flex';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            // Simulate bot response after delay
+            setTimeout(() => {
+                typingIndicator.style.display = 'none';
+                
+                const botMessageDiv = document.createElement('div');
+                botMessageDiv.className = 'message bot-message';
+                botMessageDiv.textContent = "Je traite votre demande concernant : " + message;
+                messagesContainer.appendChild(botMessageDiv);
+                
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 2000);
+        }
+
+        // Send message on button click
+        sendButton.addEventListener('click', () => {
+            sendMessage(chatInput.value);
+        });
+
+        // Send message on Enter key
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage(chatInput.value);
+            }
+        });
+
+        // Auto-focus input when chatbot opens
+        chatbotToggle.addEventListener('click', () => {
+            setTimeout(() => chatInput.focus(), 300);
+        });
+    });
+    </script>
 </body>
 </html> 

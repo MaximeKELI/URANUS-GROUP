@@ -15,6 +15,7 @@ namespace UranusGroup.Api.Services
     {
         Task<ChatResponseDto> SendMessageAsync(int userId, ChatMessageDto messageDto);
         Task<List<ChatResponseDto>> GetUserChatHistoryAsync(int userId);
+        Task<ChatMessage> ProcessMessageAsync(string message, string sessionId);
     }
 
     public class ChatService : IChatService
@@ -23,12 +24,14 @@ namespace UranusGroup.Api.Services
         private readonly HttpClient _httpClient;
         private readonly string _geminiApiKey;
         private readonly string _geminiApiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent";
+        private readonly IConfiguration _configuration;
 
         public ChatService(ApplicationDbContext context, IConfiguration configuration, IHttpClientFactory httpClientFactory)
         {
             _context = context;
             _httpClient = httpClientFactory.CreateClient();
             _geminiApiKey = configuration["Gemini:ApiKey"] ?? throw new ArgumentNullException("Gemini API Key is not configured");
+            _configuration = configuration;
         }
 
         public async Task<ChatResponseDto> SendMessageAsync(int userId, ChatMessageDto messageDto)
@@ -100,6 +103,35 @@ namespace UranusGroup.Api.Services
                 .ToListAsync();
 
             return messages;
+        }
+
+        public async Task<ChatMessage> ProcessMessageAsync(string message, string sessionId)
+        {
+            try
+            {
+                // Ici, vous pouvez intégrer un service d'IA comme OpenAI
+                // Pour l'instant, nous retournons une réponse simple
+                var response = "Je comprends votre demande concernant : " + message;
+                
+                return new ChatMessage
+                {
+                    Content = response,
+                    IsFromUser = false,
+                    SessionId = sessionId,
+                    Timestamp = DateTime.UtcNow
+                };
+            }
+            catch (Exception ex)
+            {
+                // Log l'erreur
+                return new ChatMessage
+                {
+                    Content = "Désolé, je rencontre des difficultés techniques. Veuillez réessayer plus tard.",
+                    IsFromUser = false,
+                    SessionId = sessionId,
+                    Timestamp = DateTime.UtcNow
+                };
+            }
         }
 
         private class GeminiResponse

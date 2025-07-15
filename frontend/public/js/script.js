@@ -860,4 +860,32 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     animateHeroText();
+});
+
+// Fonction pour afficher le message de succès
+function showSuccessMessage() {
+    const successMessage = document.querySelector('.success-message');
+    successMessage.style.display = 'flex';
+    setTimeout(() => {
+        successMessage.classList.add('show');
+    }, 100);
+
+    // Cacher le message après 3 secondes
+    setTimeout(() => {
+        successMessage.classList.add('hide');
+        setTimeout(() => {
+            successMessage.style.display = 'none';
+            successMessage.classList.remove('show', 'hide');
+        }, 500);
+    }, 3000);
+}
+
+// Gestionnaire du formulaire de contact
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Simulation d'envoi de formulaire
+    setTimeout(() => {
+        showSuccessMessage();
+        this.reset();
+    }, 1000);
 }); 

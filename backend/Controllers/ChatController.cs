@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UranusGroup.Api.DTOs;
 using UranusGroup.Api.Services;
+using UranusGroup.Api.Models;
 
 namespace UranusGroup.Api.Controllers
 {
@@ -30,22 +31,15 @@ namespace UranusGroup.Api.Controllers
         }
 
         [HttpPost("message")]
-        public async Task<ActionResult<ChatResponseDto>> SendMessage([FromBody] ChatMessageDto messageDto)
+        public async Task<ActionResult<ChatMessage>> SendMessage([FromBody] ChatMessage message)
         {
-            try
+            if (string.IsNullOrEmpty(message.Content))
             {
-                var userId = GetUserId();
-                var response = await _chatService.SendMessageAsync(userId, messageDto);
-                return Ok(response);
+                return BadRequest("Le message ne peut pas être vide");
             }
-            catch (UnauthorizedAccessException ex)
-            {
-                return Unauthorized(new { message = ex.Message });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
+
+            var response = await _chatService.ProcessMessageAsync(message.Content, message.SessionId);
+            return Ok(response);
         }
 
         [HttpGet("history")]
